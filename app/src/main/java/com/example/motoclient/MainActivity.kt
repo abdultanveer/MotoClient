@@ -11,6 +11,15 @@ import android.util.Log
 import com.example.motoclient.databinding.ActivityMainBinding
 import com.example.motodemo.IAddMoto
 
+/*
+steps
+1. enable aidl in buildfeatures of build.gradle [module]
+2. select app folder rt click - new - aidl file- name it as IAddMoto
+3. in IAddMoto.aidl copy the int add(int a, int b) method from motodemo also change the package to com.ex.motodemo
+4. refactor and rename the package name ie within aidl folder the inner folder should be com.example.motodemo
+5. add queries tag in the manifest
+6. onclick of button create an intent and bind it to the service
+ */
 class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
     private var mService: IAddMoto? = null
