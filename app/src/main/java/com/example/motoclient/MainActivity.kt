@@ -3,13 +3,16 @@ package com.example.motoclient
 import android.content.ComponentName
 import android.content.Intent
 import android.content.ServiceConnection
-import androidx.appcompat.app.AppCompatActivity
+import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
 import android.os.IBinder
-import android.os.Messenger
 import android.util.Log
+import android.widget.SimpleCursorAdapter
+import androidx.appcompat.app.AppCompatActivity
 import com.example.motoclient.databinding.ActivityMainBinding
 import com.example.motodemo.IAddMoto
+
 
 /*
 steps
@@ -37,6 +40,20 @@ class MainActivity : AppCompatActivity() {
             bindMyService()
         }
     }
+
+    override fun onStart() {
+        super.onStart()
+        val uriSms = Uri.parse("content://sms/inbox")
+        val dataCursor : Cursor? = getContentResolver().query(uriSms, null, null, null, null)
+        var from = arrayOf("body","address")
+        var toTvs = intArrayOf(android.R.id.text1, android.R.id.text2)
+        var adapter = SimpleCursorAdapter(this,android.R.layout.simple_list_item_2,
+            dataCursor,from,toTvs,0)
+
+        binding.listView.adapter = adapter
+
+    }
+
 
     private fun bindMyService() {
         val intent = Intent("moto.add.service")
