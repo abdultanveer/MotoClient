@@ -38,9 +38,10 @@ class MainActivity : AppCompatActivity() {
 
     private val connection = object : ServiceConnection {
         override fun onServiceConnected(p0: ComponentName?, aidlBinder: IBinder?) {
-            Log.i("clientActivity", "client activity  connected to service")
             mService = IAddMoto.Stub.asInterface(aidlBinder)
             var sum = mService?.add(30, 40)
+            Log.i("clientActivity", "connected to service--sum is--"+sum)
+
             binding.tvSum.text = ""+sum
 
         }
