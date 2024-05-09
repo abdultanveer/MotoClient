@@ -27,4 +27,14 @@
         android:text="select contact"
         app:layout_constraintStart_toStartOf="@+id/etContact"
         app:layout_constraintTop_toBottomOf="@+id/etContact" />
+
+    <TextView
+        android:id="@+id/tvCon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="26dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/btnContact"
+        app:layout_constraintTop_toBottomOf="@+id/btnContact" />
 </androidx.constraintlayout.widget.ConstraintLayout>

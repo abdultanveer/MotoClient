@@ -18,7 +18,15 @@ class SecondActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        binding.btnContact.setOnClickListener { sendContact() }
+        binding.btnContact.setOnClickListener {
+           // sendContact()
+            getShowContact()
+        }
+    }
+
+    private fun getShowContact() {
+        var con = binding.etContact.text.toString()
+        binding.tvCon.text = con
     }
 
     private fun sendContact() {
