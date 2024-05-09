@@ -9,7 +9,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 
-//patricks factory which creates objects/address boxes
+//patricks FACTORY which creates objects/address boxes
 @Module
 public class SharedPrefModule {
 
