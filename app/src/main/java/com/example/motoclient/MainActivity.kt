@@ -64,6 +64,30 @@ class MainActivity : AppCompatActivity() {
         binding.btnGet.setOnClickListener {
             loadDataContentprovider()
         }
+
+        binding.btnsafr.setOnClickListener {
+            getContact();
+        }
+    }
+
+    private fun getContact() {
+
+        var contactIntent = Intent(this, SecondActivity::class.java)
+        //request is to identify to which activity you  went so that i know what kind of data has been fetched  eg whatsapp share
+        startActivityForResult(contactIntent,123)
+    }
+
+
+    //receive the contact here
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, dataIntent: Intent?) {
+        super.onActivityResult(requestCode, resultCode, dataIntent)
+        if(resultCode == RESULT_OK){
+            if (requestCode == 123){//means that the datatype is contact
+                var phno = dataIntent?.getStringExtra("cont")
+                binding.tvSum.text = phno
+            }
+        }
     }
 
     private fun insertContentProvider() {
