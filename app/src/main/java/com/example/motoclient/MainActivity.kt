@@ -1,6 +1,7 @@
 package com.example.motoclient
 
 import android.content.ComponentName
+import android.content.ContentValues
 import android.content.Intent
 import android.content.ServiceConnection
 import android.database.Cursor
@@ -54,6 +55,33 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.btnInsert.setOnClickListener {
+            insertContentProvider()
+        }
+
+        binding.btnGet.setOnClickListener {
+            loadDataContentprovider()
+        }
+    }
+
+    private fun insertContentProvider() {
+        val usersUri = Uri.parse("content://com.moto.b3/")
+        val values = ContentValues()
+        values.put("name",binding.etName.text.toString())
+        contentResolver.insert(usersUri,values)
+
+    }
+
+    private fun loadDataContentprovider() {
+        val usersUri = Uri.parse("content://com.moto.b3")
+        var cursor = contentResolver.query(usersUri, null, null, null, null)
+        cursor?.moveToFirst()
+        var nameIndex = cursor?.getColumnIndex("name")
+        var name =  cursor?.getString(nameIndex!!)
+        binding.tvSum.text = name
+    }
 
     private fun bindMyService() {
         val intent = Intent("moto.add.service")
