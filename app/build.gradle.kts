@@ -41,6 +41,11 @@ android {
 }
 
 dependencies {
+    //dagger dependencies
+    implementation ("com.google.dagger:dagger-android:2.38.1")
+  //  implementation ("'com.google.dagger:dagger-android-support:2.38.1")// if you use the support libraries
+    annotationProcessor ("com.google.dagger:dagger-android-processor:2.38.1")
+    annotationProcessor ("com.google.dagger:dagger-compiler:2.38.1")
 
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
